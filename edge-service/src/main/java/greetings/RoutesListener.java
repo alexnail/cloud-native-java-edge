@@ -13,31 +13,31 @@ import org.springframework.stereotype.Component;
 @Component
 class RoutesListener {
 
- private final RouteLocator routeLocator;
+    private final RouteLocator routeLocator;
 
- private final DiscoveryClient discoveryClient;
+    private final DiscoveryClient discoveryClient;
 
- private Log log = LogFactory.getLog(getClass());
+    private Log log = LogFactory.getLog(getClass());
 
- @Autowired
- public RoutesListener(DiscoveryClient dc, RouteLocator rl) {
-  this.routeLocator = rl;
-  this.discoveryClient = dc;
- }
+    @Autowired
+    public RoutesListener(DiscoveryClient dc, RouteLocator rl) {
+        this.routeLocator = rl;
+        this.discoveryClient = dc;
+    }
 
- // <1>
- @EventListener(HeartbeatEvent.class)
- public void onHeartbeatEvent(HeartbeatEvent event) {
-  this.log.info("onHeartbeatEvent()");
-  this.discoveryClient.getServices().stream().map(x -> " " + x)
-   .forEach(this.log::info);
- }
+    // <1>
+    @EventListener(HeartbeatEvent.class)
+    public void onHeartbeatEvent(HeartbeatEvent event) {
+        this.log.info("onHeartbeatEvent()");
+        this.discoveryClient.getServices().stream().map(x -> " " + x)
+                .forEach(this.log::info);
+    }
 
- // <2>
- @EventListener(RoutesRefreshedEvent.class)
- public void onRoutesRefreshedEvent(RoutesRefreshedEvent event) {
-  this.log.info("onRoutesRefreshedEvent()");
-  this.routeLocator.getRoutes().stream().map(x -> " " + x)
-   .forEach(this.log::info);
- }
+    // <2>
+    @EventListener(RoutesRefreshedEvent.class)
+    public void onRoutesRefreshedEvent(RoutesRefreshedEvent event) {
+        this.log.info("onRoutesRefreshedEvent()");
+        this.routeLocator.getRoutes().stream().map(x -> " " + x)
+                .forEach(this.log::info);
+    }
 }
