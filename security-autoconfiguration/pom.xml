@@ -8,7 +8,7 @@
     <parent>
         <groupId>cnj</groupId>
         <artifactId>edge</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>2.0.0-SNAPSHOT</version>
     </parent>
     <artifactId>security-autoconfiguration</artifactId>
     <name>edge/security-autoconfiguration</name>
@@ -20,12 +20,12 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-hystrix</artifactId>
+            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-feign</artifactId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
