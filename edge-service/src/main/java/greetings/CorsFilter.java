@@ -70,9 +70,7 @@ class CorsFilter implements Filter {
                         .collect(Collectors.joining());
             });
 
-            boolean svcMatch = catalog
-                    .keySet()
-                    .stream()
+            boolean svcMatch = catalog.keySet().stream()
                     .anyMatch(serviceId -> catalog.get(serviceId).stream()
                             .map(si -> si.getHost() + ':' + si.getPort())
                             .anyMatch(hp -> hp.equalsIgnoreCase(match)));
